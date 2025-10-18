@@ -6,14 +6,14 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.4.4</version>
+    <version>3.4.1</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com</groupId>
-  <artifactId>customer</artifactId>
+  <groupId>com.core</groupId>
+  <artifactId>backend-core</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>customer</name>
-  <description>customer</description>
+  <name>backend-core</name>
+  <description>Backend Core - Modular Monolith</description>
   <url/>
   <licenses>
     <license/>
@@ -102,6 +102,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
         <configuration>
           <annotationProcessorPaths>
             <path>
@@ -110,6 +111,9 @@
               <version>${lombok.version}</version>
             </path>
           </annotationProcessorPaths>
+          <source>21</source>
+          <target>21</target>
+          <release>21</release>
         </configuration>
       </plugin>
       <plugin>
