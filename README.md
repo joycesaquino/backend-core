@@ -1,10 +1,26 @@
-# Customer Service
+# Backend Core - Modular Monolith
 
-This is a Spring Boot application that manages customer data using PostgreSQL for storage.
+[![CI Pipeline](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/ci.yml)
+[![CD Pipeline](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/cd.yml/badge.svg)](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/cd.yml)
+[![CodeQL](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/codeql.yml/badge.svg)](https://github.com/YOUR_USERNAME/backend-core/actions/workflows/codeql.yml)
+[![codecov](https://codecov.io/gh/YOUR_USERNAME/backend-core/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/backend-core)
 
-## Prerequisites
+Monolito modular Spring Boot para gerenciar domínios de **Customer** e **Schedules** com PostgreSQL.
 
-- Java 21
+## 🛠️ Tecnologias
+
+- **Java**: 21 LTS (Eclipse Temurin)
+- **Spring Boot**: 3.4.1
+- **Maven**: 3.9.9
+- **PostgreSQL**: 15.5
+- **Flyway**: Migrations
+- **Keycloak**: Authentication & Authorization
+- **Docker**: Containerização
+
+## 📋 Prerequisites
+
+- Java 21 LTS
+- Maven 3.9.x
 - Docker and Docker Compose
   - If you get "docker-compose: command not found", you may need to:
     - Install Docker Compose separately: [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
@@ -256,3 +272,69 @@ The following status values are available for customers:
 - `ACTIVE` - Customer is active and can use all services
 - `INACTIVE` - Customer is inactive (e.g., account dormant)
 - `SUSPENDED` - Customer account has been suspended
+
+## 🚀 CI/CD
+
+Este projeto utiliza GitHub Actions para automação de CI/CD. Consulte [.github/README.md](.github/README.md) para detalhes completos.
+
+### Workflows Disponíveis:
+
+- **CI Pipeline**: Build, testes e empacotamento automático
+- **CD Pipeline**: Deploy automático e releases
+- **Pull Request Checks**: Qualidade de código e cobertura de testes
+- **CodeQL Analysis**: Análise de segurança estática
+- **Dependency Review**: Revisão de dependências e vulnerabilidades
+- **Dependabot**: Atualizações automáticas de dependências
+
+### Build Local
+
+```bash
+# Compilar
+mvn clean compile
+
+# Rodar testes
+mvn test
+
+# Gerar pacote
+mvn clean package
+
+# Build Docker
+docker build -t backend-core:latest .
+
+# Rodar container
+docker run -p 8080:8080 backend-core:latest
+```
+
+## 📁 Estrutura do Projeto
+
+```
+com.core
+├── BackendCoreApplication.java
+└── customer/
+    ├── controller/
+    ├── dto/
+    ├── entity/
+    ├── enums/
+    ├── mapper/
+    ├── repository/
+    ├── service/
+    └── security/
+```
+
+## 🔐 Segurança
+
+- Autenticação via Keycloak
+- OAuth2 Resource Server
+- JWT validation
+- OWASP Dependency Check
+- CodeQL Security Analysis
+
+## 🤝 Contribuindo
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+Os workflows de PR Checks serão executados automaticamente.

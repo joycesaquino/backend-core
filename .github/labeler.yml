@@ -1,0 +1,39 @@
+# Pull request labeler configuration
+# Add labels to pull requests based on the files that are changed
+
+customer:
+  - src/main/java/com/core/customer/**/*
+  - src/test/java/com/core/customer/**/*
+
+schedules:
+  - src/main/java/com/core/schedules/**/*
+  - src/test/java/com/core/schedules/**/*
+
+database:
+  - src/main/resources/db/migration/**/*
+
+config:
+  - src/main/resources/**/*.properties
+  - src/main/resources/**/*.yml
+  - src/main/resources/**/*.yaml
+
+security:
+  - src/main/java/com/core/**/security/**/*
+
+tests:
+  - src/test/**/*
+
+dependencies:
+  - pom.xml
+
+docker:
+  - Dockerfile
+  - docker-compose.yml
+  - .dockerignore
+
+ci/cd:
+  - .github/workflows/**/*
+
+documentation:
+  - '**/*.md'
+  - docs/**/*
