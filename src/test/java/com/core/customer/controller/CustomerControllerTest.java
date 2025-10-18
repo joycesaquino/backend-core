@@ -9,10 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -27,8 +26,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(CustomerController.class)
-@Import(CustomerControllerTest.TestConfig.class)
+@WebMvcTest(controllers = CustomerController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class CustomerControllerTest {
 
     @Autowired
@@ -37,16 +36,8 @@ class CustomerControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
+    @MockBean
     private CustomerService customerService;
-
-    static class TestConfig {
-        @Bean
-        @Primary
-        public CustomerService customerService() {
-            return org.mockito.Mockito.mock(CustomerService.class);
-        }
-    }
 
     @Test
     @DisplayName("Should return all customers when getAllCustomers is called")
