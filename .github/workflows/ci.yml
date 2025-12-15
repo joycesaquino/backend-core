@@ -46,7 +46,7 @@ jobs:
       run: mvn package -DskipTests -B
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       if: success()
       with:
         name: backend-core-jar
